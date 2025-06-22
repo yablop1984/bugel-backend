@@ -15,7 +15,18 @@ export default async function handler(req, res) {
     const respuesta = await fetch("https://script.google.com/macros/s/AKfycbx5AxtL_nSmCZjs2bQXTA_bHj9mF9pN2OAjc5cFBL5qhJWg1fCPyJYo4ba5cmrvsXy9qA/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(req.body),
+      body: JSON.stringify({
+        nombre: req.body.nombre,
+        proyecto: req.body.proyecto,
+        producto: req.body.producto,
+        parte: req.body.parte,
+        ruta: req.body.ruta,
+        maquina: req.body.maquina,
+        proceso: req.body.proceso,
+        piezas: req.body.piezas,
+        fecha_inicio: req.body.fecha_inicio,
+        fecha_fin: req.body.fecha_fin
+      }),
     });
 
     const texto = await respuesta.text();
